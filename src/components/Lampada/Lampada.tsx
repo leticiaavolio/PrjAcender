@@ -1,17 +1,42 @@
 import { StyleSheet, View, Image, TouchableOpacity, Text} from 'react-native';
-import FontAwesome from '@expo/vector-icons/FontAwesome6'
+import FontAwesome from '@expo/vector-icons/FontAwesome6';
+import lampOn from '../../../assets/lampOn.jpg';
+import lampOff from '../../../assets/lampOff.jpg';
+import React,{useState} from "react";
 
 export default function Lampada() {
+
+    const [ligada, setLigada] = useState(true); //hook
+    const [msg,setApagou] = useState("Acendeu");
+
+    function TurnOnOff(){
+        /*if (ligada==true){
+            setLigada(false);        
+        }
+        else{
+            setLigada(true); 
+        }*/
+        setLigada(!ligada);
+        if (ligada==false){
+            setApagou("Acendeu");        
+        }
+        else{
+            setApagou("Apagou"); 
+        }
+    }
+
   return (
     <View style={styles.container}>
-        <TouchableOpacity>
-            <Image source={require('../../../assets/lampOn.jpg')} style={styles.LampImg} resizeMode='contain'/>
+        <TouchableOpacity onPress={TurnOnOff}>
+            <Image
+                source={ligada?lampOn:lampOff} resizeMode='contain'
+            />
         </TouchableOpacity>
 
-
         <View style={styles.status}>  
-            <Text style={styles.statusLamp}>Acendeu</Text>
-        </View>
+            <Text style={styles.statusLamp}>{msg}</Text>
+         </View>
+
 
         <View style={styles.helloWorld}>
             <Text style={styles.helloText}>Hello World!</Text>
@@ -30,9 +55,7 @@ const styles = StyleSheet.create({
 
         width:'100%',
     },
-    LampImg:{
-        width:'25%',
-    },status:{
+    status:{
         backgroundColor:'#000',
         width:'50%',
         height:'20%',
@@ -40,7 +63,7 @@ const styles = StyleSheet.create({
         borderColor:'yellow',
         borderStyle:'solid',
         alignItems:'center',
-        justifyContent:'center'
+        justifyContent:'center',
     },
     statusLamp:{
         color:'yellow',
