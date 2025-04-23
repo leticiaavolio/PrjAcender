@@ -10,7 +10,8 @@ export default function Home() {
     <View style={styles.container}>
         <StatusBar style="auto" />
         <Header />
-        <Mensagem />
+        {/* os valores das props devem ser colocados entre chaves como objetos, menos valores strings */}
+        <Mensagem status={true} nome="letileti" idade={18}/>
         <Lampada />
         <Footer />
     </View>

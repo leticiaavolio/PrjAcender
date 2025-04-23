@@ -16,13 +16,16 @@ export default function Lampada() {
         else{
             setLigada(true); 
         }*/
-        setLigada(!ligada);
-        if (ligada==false){
-            setApagou("Acendeu");        
-        }
-        else{
-            setApagou("Apagou"); 
-        }
+         setLigada(!ligada);
+
+        /* if (ligada==false){
+             setApagou("Acendeu");        
+         }
+         else{
+             setApagou("Apagou"); 
+         } */
+
+         setApagou(ligada?"Apagou":"Acendeu")
     }
 
   return (
@@ -52,7 +55,6 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         backgroundColor:'#fff',
-
         width:'100%',
     },
     status:{

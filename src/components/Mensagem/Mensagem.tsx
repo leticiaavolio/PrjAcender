@@ -1,10 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native';
-import FontAwesome from '@expo/vector-icons/FontAwesome6'
-
-export default function Mensagem() {
+import FontAwesome from '@expo/vector-icons/FontAwesome6';
+import React from 'react';
+//Passo 1 = definir a prop
+type Props = {
+  nome: string,
+  idade:number,
+  status:boolean,
+}
+//Passo 2 = receber a prop como parametro da função que cria o componente
+export default function Mensagem(props: Props) {
   return (
+    //Passo3 = fazer algo com o parametro passado.No caso, estamos apenas exibindo no componente
     <View style={styles.mensagem}>
-        <Text style={styles.textMsg}>Olá Pedrinho, você tem 22 anos e seu status é inativo</Text>
+        <Text style={styles.textMsg}>Olá {props.nome}, você tem {props.idade} anos e seu status é {props.status?"ativo":"inativo"}.</Text>
         <FontAwesome size={15} name="face-smile" color='#fff'/>
     </View>
   );
@@ -13,7 +21,7 @@ export default function Mensagem() {
 const styles = StyleSheet.create({
     textMsg: {
     color:'#fff',
-    fontSize:10,
+    fontSize:12,
   },
     mensagem:{
         flex:0.25,
